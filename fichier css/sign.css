@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    height: 100vh;
+    overflow-x: hidden;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.conteneur {
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid #000;
+    backdrop-filter: blur(22px);
+    border-radius: 20px;
+    text-align: center;
+}
+
+svg {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid darkgreen;
+    fill: darkgreen;
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 60px;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+form {
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    padding: 10px;
+    outline: none;
+    border-radius: 20px;
+    border: 1px solid #000;
+}
+
+button {
+    width: 100%;
+    max-width: 200px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+}
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #000;
+}
+
+p a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: darkgreen;
+    font-weight: bolder;
+    text-decoration: none;
+    ;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
