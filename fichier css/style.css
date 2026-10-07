@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .app {
@@ -20,14 +20,13 @@ body {
   width: 25vw;
   height: 100vh;
   background-color: blueviolet;
-  overflow-y: auto;
 }
 
 .sidebar {
   padding: 30px 26px;
   position: fixed;
   top: 0;
-  overflow-y: auto;
+  position: sticky;
 }
 
 h1 {
@@ -60,17 +59,16 @@ h1 {
   border-radius: 10px;
 }
 
+.nav-item:active {
+  background-color: rgba(86, 12, 12, 0.281);
+}
+
 .nav-item:hover {
   text-decoration: underline;
   background-color: rgba(86, 12, 12, 0.281);
   border-radius: 10px;
   text-decoration-thickness: 2px;
 }
-
-.nav-item:active {
-  color: yellow;
-}
-
 .nav-item svg {
   width: 20px;
   height: 20px;
@@ -79,12 +77,14 @@ h1 {
 }
 
 .container-app {
+  overflow-y: auto;
   width: 100vw;
   height: 100vh;
   display: block;
   gap: 10px;
   background-color: rgba(137, 43, 226, 0.119);
 }
+
 header {
   height: 60px;
   display: flex;
@@ -92,41 +92,187 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  position: sticky;
+  top: 0;
 }
 
-/* body {
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-  background-color: whitesmoke;
+.box-container{
+  padding: 0 20px;
+  width: 100%;
+  z-index: 1;
 }
-.box {
-  width: 100vw;
-  height: 100vh;
+.banniere{
+  margin-top: 50px;
+  margin-bottom: 60px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 14px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.bann1{
   display: flex;
   justify-content: flex-start;
-}
-
-.box1 {
-  width: 25vw;
-  height: 100vh;
-  background-color: blueviolet;
-}
-.box2 {
-  width: 75vw;
-  height: 100vh;
-  background-color: lightblue;
-  display: block;
+  align-items: center;
   gap: 10px;
 }
-.box2-1 {
-  width: 100%;
-  background-color: white;
-  padding: 10px;
-  margin-bottom: 10px;
+.card-tags {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
 }
-.box2-2 {
+
+.card-tags span {
+  background: whitesmoke;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.bann2 a{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  background-color: gold;
+  color: blueviolet;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  font-weight: bolder;
+}
+.stats {
+  margin-top: 50px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom:60px;
+}
+
+.stat {
   width: 100%;
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  border-left: 5px solid blueviolet;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.stat h3 {
+  font-size: 22px;
+  color: #0f172a;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.stat p {
+  color: #64748b;
+  font-size: 13px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.stat-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.task-box{
+  padding: 0 20px;
+  width: 100%;
+  z-index: 1;
+}
+.task{
+  margin-top: 50px;
+  margin-bottom: 60px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: white;
-  padding: 10px;
-} */
+  border-radius: 14px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.task a{
+  color: black;
+  background-color: whitesmoke;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 20px;
+  padding: 4px 10px;
+}
+
+.grid-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.card {
+  gap: 5px;
+  width: 100%;
+  height: 150px;
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.card h3 {
+  font-size: 22px;
+  color: #0f172a;
+  margin-bottom: 15px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.card p {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 6px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.card div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+#highCount {
+  background: #fee2e2;
+  color: #ef4444;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.card a {
+  color: #4f46e5;
+  background-color: #4e46e54f;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 20px;
+  padding:4px 10px;
+}

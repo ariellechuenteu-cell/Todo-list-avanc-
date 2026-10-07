@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TodoPro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Inter, Segoe UI, sans-serif
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background: #f3f4f6
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #0f172a;
+            color: white;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh
+        }
+
+        .sidebar h2 {
+            color: #818cf8;
+            margin-bottom: 30px;
+            font-size: 24px
+        }
+
+        .sidebar a {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 6px;
+            cursor: pointer
+        }
+
+        .sidebar a.active,
+        .sidebar a:hover {
+            background: #1e293b;
+            color: white
+        }
+
+        .main {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            margin-bottom: 20px
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px
+        }
+
+        .stat {
+            background: white;
+            padding: 18px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04)
+        }
+
+        .stat h3 {
+            font-size: 26px;
+            color: #0f172a
+        }
+
+        .stat p {
+            color: #64748b;
+            font-size: 13px
+        }
+
+        .stat-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px
+        }
+
+        .task-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 8px
+        }
+
+        .task-row.done {
+            opacity: 0.5;
+            text-decoration: line-through
+        }
+
+        .badge {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: white
+        }
+
+        .badge-high {
+            background: #ef4444
+        }
+
+        .badge-medium {
+            background: #f59e0b
+        }
+
+        .badge-low {
+            background: #10b981
+        }
+
+        .folder-card {
+            padding: 15px;
+            border-radius: 12px;
+            background: #f8fafc;
+            border-left: 5px solid #6366f1
+        }
+
+        .calendar-mini.day {
+            padding: 6px;
+            text-align: center;
+            border-radius: 8px
+        }
+
+        .calendar-mini.today {
+            background: #4f46e5;
+            color: white
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 8px
+        }
+
+        .progress {
+            height: 100%;
+            background: #4f46e5
+        }
+
+        @media(max-width:900px) {
+            .grid-2 {
+                grid-template-columns: 1fr
+            }
+
+            body {
+                flex-direction: column
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative
+            }
+
+            .main {
+                padding: 15px
+            }
+        }
+
+        body.dark-theme {
+            background: #020617;
+            color: white
+        }
+
+        .dark-theme.card,
+        .dark-theme.stat {
+            background: #1e293b;
+            color: white;
+            border-color: #334155
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="sidebar">
+        <h2>TodoPro ✨</h2>
+        <a id="nav-dashboard" class="active">🏠 Dashboard</a>
+        <a id="nav-tasks">📋 Tâches</a>
+        <a id="nav-folders">📁 Dossiers</a>
+        <a id="nav-calendar">📅 Calendrier</a>
+        <a id="nav-settings">⚙️ Paramètres</a>
+        <hr style="margin:20px 0;border-color:#1e293b">
+        <a id="contactLink">💬 Contact</a>
+        <a href="../landing-privacy.html" target="_blank">🔒 Confidentialité</a>
+        <a id="logoutBtn" style="color:#f87171">🚪 Déconnexion</a>
+    </nav>
+
+    <main class="main">
+
+        <!-- ============ DASHBOARD RÉEL ============ -->
+        <div id="page-dashboard">
+            <div class="top-bar">
+                <div>
+                    <h1 style="font-size:28px;">Dashboard</h1>
+                    <p style="color:#64748b;">Bonjour <span id="userName">!</span> Voici ce qui se passe aujourd'hui.
+                    </p>
+                </div>
+                <div style="background:white;padding:10px 18px;border-radius:30px;box-shadow:0 2px 10px rgba(0,0,0,0.05);"
+                    id="todayDate"></div>
+            </div>
+
+            <!-- STATS -->
+            <div class="stats">
+                <div class="stat">
+                    <div>
+                        <h3 id="statTotal">0</h3>
+                        <p>Total tâches</p>
+                    </div>
+                    <div class="stat-icon" style="background:#eef2ff;">📋</div>
+                </div>
+                <div class="stat">
+                    <div>
+                        <h3 id="statDone">0</h3>
+                        <p>Terminées</p>
+                    </div>
+                    <div class="stat-icon" style="background:#dcfce7;">✅</div>
+                </div>
+                <div class="stat">
+                    <div>
+                        <h3 id="statPending">0</h3>
+                        <p>En cours</p>
+                    </div>
+                    <div class="stat-icon" style="background:#fef3c7;">⏳</div>
+                </div>
+                <div class="stat">
+                    <div>
+                        <h3 id="statOverdue">0</h3>
+                        <p>En retard</p>
+                    </div>
+                    <div class="stat-icon" style="background:#fee2e2;">🚨</div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <!-- COLONNE GAUCHE -->
+                <div>
+                    <div class="card">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
+                            <h3>🔥 Priorités urgentes</h3><span id="highCount"
+                                style="background:#fee2e2;color:#ef4444;padding:4px 10px;border-radius:20px;font-size:12px;">0</span>
+                        </div>
+                        <div id="urgentTasks"></div>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="margin-bottom:15px;">📋 Tâches récentes</h3>
+                        <div id="recentTasks"></div>
+                        <div class="progress-bar">
+                            <div class="progress" id="progressBar" style="width:0%"></div>
+                        </div>
+                        <p style="font-size:12px;color:#64748b;margin-top:6px;"><span id="progressText">0%</span>
+                            complété</p>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="margin-bottom:12px;">📊 Répartition par priorité</h3>
+                        <div id="priorityChart" style="display:flex;gap:10px;"></div>
+                    </div>
+                </div>
+
+                <!-- COLONNE DROITE -->
+                <div>
+                    <div class="card" style="background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;">
+                        <h3>🚀 À propos de TodoPro</h3>
+                        <p style="margin:10px 0;font-size:14px;opacity:0.9;line-height:1.5;">
+                            TodoPro regroupe <strong>tâches, dossiers et calendrier</strong> en un seul endroit.
+                            Tes données sont <strong>chiffrées SHA-256</strong>, stockées hors-ligne et isolées par
+                            utilisateur.
+                            Crée des dossiers colorés, fixe des deadlines, et suis ta progression sans internet.
+                        </p>
+                        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+                            <span
+                                style="background:rgba(255,255,255,0.2);padding:5px 10px;border-radius:20px;font-size:12px;">📁
+                                Dossiers</span>
+                            <span
+                                style="background:rgba(255,255,255,0.2);padding:5px 10px;border-radius:20px;font-size:12px;">📅
+                                Calendrier</span>
+                            <span
+                                style="background:rgba(255,255,255,0.2);padding:5px 10px;border-radius:20px;font-size:12px;">🔒
+                                Sécurisé</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div style="display:flex;justify-content:space-between;margin-bottom:12px;">
+                            <h3>📁 Dossiers</h3><a onclick="document.getElementById('nav-folders').click()"
+                                style="color:#4f46e5;cursor:pointer;font-size:13px;">Voir tout →</a>
+                        </div>
+                        <div id="dashboardFolders"></div>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="margin-bottom:12px;">📅 Aujourd'hui</h3>
+                        <div id="todayTasks"></div>
+                        <div id="calendarMini" class="calendar-mini"
+                            style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:15px;font-size:12px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AUTRES PAGES (tu les as déjà, je les laisse vides pour la structure) -->
+        <div id="page-tasks" style="display:none;">
+            <h2>Mes Tâches</h2>
+            <div class="card">
+                <form id="taskForm"><input id="taskTitle" placeholder="Titre..." required
+                        style="width:100%;padding:10px;margin-bottom:10px;">
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;"><select id="taskPriority">
+                            <option value="low">Faible</option>
+                            <option value="medium" selected>Moyenne</option>
+                            <option value="high">Haute</option>
+                        </select><input type="date" id="taskDate"><select id="taskFolder">
+                            <option value="">Sans dossier</option>
+                        </select><button
+                            style="background:#4f46e5;color:white;border:none;padding:8px 15px;border-radius:8px;">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card">
+                <div style="display:flex;gap:10px;margin-bottom:10px;"><input id="searchTask"
+                        placeholder="🔍 Rechercher..." style="padding:8px;flex:1;"><select id="filterPriority">
+                        <option value="all">Toutes</option>
+                        <option value="high">Haute</option>
+                        <option value="medium">Moyenne</option>
+                        <option value="low">Faible</option>
+                    </select></div>
+                <div id="tasksList"></div>
+            </div>
+        </div>
+
+        <div id="page-folders" style="display:none;">
+            <h2>Dossiers</h2>
+            <div class="card">
+                <form id="folderForm" style="display:flex;gap:10px;"><input id="folderName" placeholder="Nom dossier"
+                        required style="padding:8px;flex:1;"><input type="color" id="folderColor"
+                        value="#4f46e5"><button
+                        style="background:#4f46e5;color:white;border:none;padding:8px 15px;border-radius:8px;">Créer</button>
+                </form>
+            </div>
+            <div id="foldersList"
+                style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;"></div>
+        </div>
+
+        <div id="page-calendar" style="display:none;">
+            <h2>Calendrier</h2>
+            <div class="card">
+                <div style="display:flex;justify-content:space-between;"><button id="prevMonth">⬅️</button>
+                    <h3 id="calendarMonthYear"></h3><button id="nextMonth">➡️</button>
+                </div>
+                <div id="calendarGrid"
+                    style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:15px;"></div>
+            </div>
+            <div class="card">
+                <h3 id="selectedDateTitle">Sélectionne une date</h3>
+                <div id="dayTasks"></div>
+            </div>
+        </div>
+
+        <div id="page-settings" style="display:none;">
+            <h2>Paramètres</h2>
+            <div class="card">
+                <form id="profileForm"><input id="settingName" style="width:100%;padding:8px;margin-bottom:10px;"><input
+                        id="settingEmail" style="width:100%;padding:8px;margin-bottom:10px;"><button
+                        style="background:#4f46e5;color:white;border:none;padding:8px 15px;border-radius:8px;">Mettre à
+                        jour</button></form>
+            </div>
+            <div class="card">
+                <form id="passwordForm"><input type="password" id="oldPassword" placeholder="Ancien" required
+                        style="width:100%;padding:8px;margin-bottom:10px;"><input type="password" id="newPassword"
+                        placeholder="Nouveau" required style="width:100%;padding:8px;margin-bottom:10px;"><button
+                        style="background:#4f46e5;color:white;border:none;padding:8px 15px;border-radius:8px;">Changer</button>
+                </form><button id="deleteAccountBtn"
+                    style="background:red;color:white;border:none;padding:8px 15px;border-radius:8px;margin-top:10px;">Supprimer
+                    compte</button>
+            </div>
+            <div class="card"><select id="themeSelect">
+                    <option value="light">Clair</option>
+                    <option value="dark">Sombre</option>
+                </select> <select id="langSelect" style="margin-left:10px;">
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                </select> <label style="margin-left:15px;"><input type="checkbox" id="notifToggle"> Rappels</label>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- CONTACT -->
+    <div id="contactModal"
+        style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:100;">
+        <div style="background:white;padding:20px;border-radius:12px;width:90%;max-width:400px;">
+            <h3>Contact</h3>
+            <form id="contactForm"><input id="contactEmail" readonly
+                    style="width:100%;padding:8px;margin-bottom:10px;"><textarea id="contactMessage" required
+                    style="width:100%;height:100px;padding:8px;"></textarea><br><br><button
+                    style="background:#4f46e5;color:white;border:none;padding:8px 15px;border-radius:8px;">Envoyer</button><button
+                    type="button" id="closeContact" style="padding:8px 15px;">Fermer</button></form>
+            <p id="contactSuccess" style="display:none;color:green;">Envoyé!</p>
+        </div>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/folders.js"></script>
+    <script src="../js/tasks.js"></script>
+    <script src="../js/calendar.js"></script>
+    <script src="../js/settings.js"></script>
+    <script src="../js/app.js"></script>
+
+    <script>
+        // LOGIQUE VRAI DASHBOARD
+        function refreshDashboard() {
+            try {
+                const user = JSON.parse(sessionStorage.getItem('currentUser'));
+                const tasks = (JSON.parse(localStorage.getItem('tasks')) || []).filter(t => t.userId === user.id);
+                const folders = (JSON.parse(localStorage.getItem('folders')) || []).filter(f => f.userId === user.id);
+                const todayStr = new Date().toISOString().split('T')[0];
+
+                // Stats
+                const total = tasks.length, done = tasks.filter(t => t.done).length, pending = total - done;
+                const overdue = tasks.filter(t => !t.done && t.dueDate && t.dueDate < todayStr).length;
+                document.getElementById('statTotal').textContent = total;
+                document.getElementById('statDone').textContent = done;
+                document.getElementById('statPending').textContent = pending;
+                document.getElementById('statOverdue').textContent = overdue;
+                document.getElementById('highCount').textContent = tasks.filter(t => t.priority === 'high' && !t.done).length + ' urgentes';
+
+                // Progression
+                const pct = total ? Math.round(done / total * 100) : 0;
+                document.getElementById('progressBar').style.width = pct + '%';
+                document.getElementById('progressText').textContent = pct + '%';
+
+                // Urgentes
+                document.getElementById('urgentTasks').innerHTML = tasks.filter(t => t.priority === 'high' && !t.done).slice(0, 3).map(t => `
+      <div class="task-row"><span>${t.title}</span><span class="badge badge-high">HIGH</span></div>
+    `).join('') || '<p style="color:#94a3b8;font-size:13px;">Aucune tâche urgente 🎉</p>';
+
+                // Récentes
+                document.getElementById('recentTasks').innerHTML = tasks.slice(-4).reverse().map(t => `
+      <div class="task-row ${t.done ? 'done' : ''}"><span>${t.title}</span><span class="badge badge-${t.priority}">${t.priority}</span></div>
+    `).join('') || '<p style="color:#94a3b8;">Aucune tâche</p>';
+
+                // Dossiers
+                document.getElementById('dashboardFolders').innerHTML = folders.map(f => {
+                    const count = tasks.filter(t => t.folderId === f.id).length;
+                    return `<div class="folder-card" style="border-left-color:${f.color};margin-bottom:10px;"><strong>${f.name}</strong><br><small>${count} tâches</small></div>`;
+                }).join('') || '<p style="color:#94a3b8;">Aucun dossier</p>';
+
+                // Aujourd'hui
+                document.getElementById('todayTasks').innerHTML = tasks.filter(t => t.dueDate === todayStr).map(t => `
+      <div class="task-row"><span>${t.title}</span><span>${t.done ? '✅' : '⏳'}</span></div>
+    `).join('') || '<p style="color:#94a3b8;font-size:13px;">Rien pour aujourd\'hui</p>';
+
+                // Répartition
+                const low = tasks.filter(t => t.priority === 'low').length, med = tasks.filter(t => t.priority === 'medium').length, high = tasks.filter(t => t.priority === 'high').length;
+                document.getElementById('priorityChart').innerHTML = `
+      <div style="flex:1;background:#fee2e2;padding:10px;border-radius:10px;text-align:center;"><strong style="color:#ef4444;">${high}</strong><br><small>Haute</small></div>
+      <div style="flex:1;background:#fef3c7;padding:10px;border-radius:10px;text-align:center;"><strong style="color:#f59e0b;">${med}</strong><br><small>Moyenne</small></div>
+      <div style="flex:1;background:#dcfce7;padding:10px;border-radius:10px;text-align:center;"><strong style="color:#10b981;">${low}</strong><br><small>Faible</small></div>
+    `;
+
+                // Date
+                document.getElementById('todayDate').textContent = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+
+            } catch (e) { console.log(e) }
+        }
+        setInterval(refreshDashboard, 1000);
+        document.addEventListener('DOMContentLoaded', refreshDashboard);
+    </script>
+
+</body>
+
+</html>
