@@ -68,7 +68,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-item">
+                            <a href="#" target="" class="nav-item" id="deconnexion">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                                     <path
                                         d="M569 337C578.4 327.6 578.4 312.4 569 303.1L425 159C418.1 152.1 407.8 150.1 398.8 153.8C389.8 157.5 384 166.3 384 176L384 256L272 256C245.5 256 224 277.5 224 304L224 336C224 362.5 245.5 384 272 384L384 384L384 464C384 473.7 389.8 482.5 398.8 486.2C407.8 489.9 418.1 487.9 425 481L569 337zM224 160C241.7 160 256 145.7 256 128C256 110.3 241.7 96 224 96L160 96C107 96 64 139 64 192L64 448C64 501 107 544 160 544L224 544C241.7 544 256 529.7 256 512C256 494.3 241.7 480 224 480L160 480C142.3 480 128 465.7 128 448L128 192C128 174.3 142.3 160 160 160L224 160z" />
@@ -81,7 +81,14 @@
             </aside>
 
         </div>
-
+        <div class="overlay">
+            <div class="modal">
+                <h2>Confirmer la deconnexion</h2>
+                <p>Etes-vous sur(e) de vouloir vous deconnectez?</p>
+                <button id="annuler">Annuler</button>
+                <button id="confirmer">Oui, deconnecter</button>
+            </div>
+        </div>
         <div class="container-app">
             <header>
                 <div class="header-title" style="display: flex; align-items: center; gap: 10px;">
@@ -106,7 +113,11 @@
 
                 </div>
                 <div class="header-user" style="display: flex; align-items: center; gap: 10px;">
-                    <p>Bonjour <span id="userName"></span></p>
+                    <p style="display: flex; align-items: center; gap: 8px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" style="object-fit: cover; border: 2px solid blueviolet; border-radius: 50px; box-sizing: border-box; padding: 2px; width: 25px; height: 25px;">
+                            <path d="M320 312C386.3 312 440 258.3 440 192C440 125.7 386.3 72 320 72C253.7 72 200 125.7 200 192C200 258.3 253.7 312 320 312zM290.3 368C191.8 368 112 447.8 112 546.3C112 562.7 125.3 576 141.7 576L498.3 576C514.7 576 528 562.7 528 546.3C528 447.8 448.2 368 349.7 368L290.3 368z"/>
+                        </svg>
+                        Bonjour <span id="userName"></span></p>
                 </div>
             </header>
 
@@ -136,7 +147,7 @@
                         </div>
                     </div>
                     <div class="bann2">
-                        <a href="" id="taskBtn">
+                        <a href="C:\Users\Desktop Arielle\Desktop\todoList\fichier html\tache.html" id="taskBtn">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" style="width: 20px; height: 20px; fill: blueviolet"><path d="M441.3 299.8C451.5 312.4 450.8 330.9 439.1 342.6L311.1 470.6C301.9 479.8 288.2 482.5 276.2 477.5C264.2 472.5 256.5 460.9 256.5 448L256.5 192C256.5 179.1 264.3 167.4 276.3 162.4C288.3 157.4 302 160.2 311.2 169.3L439.2 297.3L441.4 299.7z"/>
                             </svg>
                             Creer une nouvelle tache
@@ -178,7 +189,7 @@
 
             <div class="task-box">
                 <div class="task">
-                    <h3>🗒️ Tâches récentes</h3> <a href="">Voir tout</a>
+                    <h3>🗒️ Tâches récentes</h3> <a href="C:\Users\Desktop Arielle\Desktop\todoList\fichier html\tache.html">Voir tout</a>
                 </div>
                 <div id="recentTasks"></div>
             </div>
@@ -214,8 +225,17 @@
                 </div>
 
             </div>
+
+            <footer>
+                <p>2026© To-do Pro</p>
+                <a href="">Politique et confidentialite</a>
+                <a href="">Contact</a>
+            </footer>
         </div>
     </div>
+    
+
+    <script src="C:\Users\Desktop Arielle\Desktop\todoList\fichier js\script.js"></script>
 </body>
 
 </html>

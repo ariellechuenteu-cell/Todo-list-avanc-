@@ -1,96 +1,190 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.app {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.sidebar-container {
-    width: 25vw;
-    height: 100vh;
-    background-color: blueviolet;
-    overflow-y: auto;
-}
-
-.sidebar {
-    padding: 30px 26px;
-    position: fixed;
-    top: 0;
-    overflow-y: auto;
-}
-
-h1 {
-    text-align: left;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 30px;
-}
-
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.navbar ul li {
-    margin-bottom: 5px;
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
-    padding: 10px;
+.box-container {
+    padding: 0 30px;
     width: 100%;
-    text-decoration: none;
-    color: whitesmoke;
-    font-weight: 500;
-    border-radius: 10px;
+    z-index: 1;
 }
 
-.nav-item:hover {
-    text-decoration: underline;
-    background-color: rgba(86, 12, 12, 0.281);
-    border-radius: 10px;
-    text-decoration-thickness: 2px;
-}
-
-.nav-item:active {
-    color: yellow;
-}
-
-.nav-item svg {
-    width: 20px;
-    height: 20px;
-    fill: whitesmoke;
-    flex-shrink: 0;
-}
-
-.container-app {
-    width: 100vw;
-    height: 100vh;
-    display: block;
-    gap: 10px;
-    background-color: rgba(137, 43, 226, 0.119);
-}
-
-header {
-    height: 60px;
+.banniere {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    padding: 20px;
     display: flex;
-    border-bottom: 2px solid rgba(137, 43, 226, 0.119);
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 14px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.box-infos {
+    padding: 0 30px;
+    width: 100%;
+    z-index: 1;
+}
+
+.infos-perso {
+    padding: 20px;
+    background-color: white;
+    border-radius: 14px;
+    border: none;
+}
+
+.infos-person1-1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+}
+
+.infos-perso1-1-3 {
+    display: block;
+    line-height: 0.4;
+}
+
+.formular {
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    gap: 20px;
+}
+
+.formular div {
+    width: 100%;
+}
+
+.formular-actions{
+    display: flex;
+    justify-content: flex-end;
+}
+label {
+    line-height: 1.5;
+    color: rgba(137, 43, 226, 0.457);
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+input {
+    border: 2px solid rgba(137, 43, 226, 0.119);
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    outline: none;
+    border-radius: 10px;
+}
+
+.formular-actions button {
+    margin-top: 20px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    float: right;
+    background-color: gold;
+    color: blueviolet;
+    font-weight: bolder;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.box-content{
+    margin: 0 30px;
+    background-color: white;
+    border-radius: 14px;
+    border: none;
+}
+.box-security{
+    margin-top: 50px;
+    padding: 0 30px;
+    width: 100%;
+    z-index: 1;
+}
+.box-security1{
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+
+.box-edit {
+    padding: 0 30px;
+    width: 100%;
+    z-index: 1;
+}
+
+.box-edit1 {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.box-edit1-1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.box-edit1-2 button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    background-color: blueviolet;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.box-delete {
+    padding: 0 30px;
+    width: 100%;
+    z-index: 1;
+}
+
+.box-delete1 {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.box-delete1-1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.box-delete1-2 button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: red;
+    padding: 8px 10px;
+    border: 2px solid red;
+    border-radius: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: bolder;
+    cursor: pointer;
 }

@@ -10,6 +10,16 @@
 
 <body>
     <div class="box">
+        <div class="conteneur1">
+            <img src="C:\Users\Desktop Arielle\Desktop\todoList\images\logo.png" alt="logo" width="200" height="200"
+                style="object-fit: cover;">
+            <!-- <img src="C:\Users\Desktop Arielle\Desktop\todoList\images\todo.png" alt="logo" width="200" height="200" style="object-fit: cover;"> -->
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat deserunt, atque nulla officia aliquid
+                vel illum inventore eveniet est quas. Voluptas doloribus accusantium cum ullam accusamus quod, veniam
+                neque asperiores?
+            </p>
+            <button id="login-btn" type="submit">Connexion</button>
+        </div>
         <div class="conteneur">
             <h1>WELCOME</h1>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
@@ -17,25 +27,21 @@
                     d="M320 312C386.3 312 440 258.3 440 192C440 125.7 386.3 72 320 72C253.7 72 200 125.7 200 192C200 258.3 253.7 312 320 312zM290.3 368C191.8 368 112 447.8 112 546.3C112 562.7 125.3 576 141.7 576L498.3 576C514.7 576 528 562.7 528 546.3C528 447.8 448.2 368 349.7 368L290.3 368z" />
             </svg>
             <h2>Creer son compte</h2>
-            <input type="text" name="nom" id="nom" placeholder="Exemple: Pierre"><br><br>
+            <input type="text" name="nom" id="nom" placeholder="Nom: Kuate Foaleng">
+            <input type="text" name="prenom" id="prenom" placeholder="Prenom: Willaim Milord"><br><br>
+            <input type="tel" name="telephone" id="telephone" placeholder="Telephone: 659030225">
             <input type="email" name="email" id="email" placeholder="toto@gmail.com"><br><br>
-            <input type="password" name="password" id="password" placeholder="Mot de passe"><br><br>
-            <input type="password" name="password" id="password-confirmation"
-                placeholder="confirmation mot de passe"><br><br>
+            <input type="password" name="password" id="password" placeholder="Mot de passe">
+            <input type="password" name="password" id="password-confirmation" placeholder="confirmation mot de passe"><br><br>
+            <input type="checkbox" name="termes" id="termes" style="height: 15px; width: 15px; padding: 0; margin: 0;">
+            <label for="termes">J'accepte les termes & conditions</label><br><br>
+            <p id="message"></p>
             <button id="submit-btn" type="submit">S'inscrire</button><br><br>
+
             <p>J'ai deja un compte.<a href="login.html" target="_blank">Se connecter</a></p>
         </div>
-        <div class="conteneur1">
-            <img src="C:\Users\Desktop Arielle\Desktop\todoList\images\logo.png" alt="logo" width="200" height="200"
-                style="object-fit: cover;">
-            <!-- <img src="C:\Users\Desktop Arielle\Desktop\todoList\images\todo.png" alt="logo" width="200" height="200" style="object-fit: cover;"> -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat deserunt, atque nulla officia aliquid
-                vel illum inventore eveniet est quas. Voluptas doloribus accusantium cum ullam accusamus quod, veniam
-                neque asperiores?</p>
-            <button id="login-btn" type="submit">Connexion</button>
-        </div>
     </div>
-
+<script src="C:\Users\Desktop Arielle\Desktop\todoList\fichier js\sign.js"></script>
 </body>
 
 </html>

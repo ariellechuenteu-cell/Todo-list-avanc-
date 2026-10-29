@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes dossiers</title>
+    <link rel="stylesheet" href="C:\Users\Desktop Arielle\Desktop\todoList\fichier css\style.css">
     <link rel="stylesheet" href="C:\Users\Desktop Arielle\Desktop\todoList\fichier css\dossier.css">
 </head>
 <body>
@@ -71,10 +72,19 @@
 
         </div>
 
+        <div class="overlay">
+            <div class="modal">
+                <h2>Confirmer la deconnexion</h2>
+                <p>Etes-vous sur(e) de vouloir vous deconnectez?</p>
+                <button id="annuler">Annuler</button>
+                <button id="confirmer">Oui, deconnecter</button>
+            </div>
+        </div>
+
         <div class="container-app">
             <header>
                 <div class="header-title" style="display: flex; align-items: center; gap: 10px;">
-                    <p>Accueil - <b>Tableau de bord</b></p>
+                    <p>Accueil - <b>Mes dossiers</b></p>
                 </div>
                 <div class="header-lang" style="display: flex; align-items: center; gap: 10px;">
                     <img src="C:\Users\Desktop Arielle\Desktop\todoList\images\icons8-france-48.png" alt="" width="25" height="25" style="object-fit: cover; border: 2px solid blueviolet; border-radius:5px; box-sizing: border-box; padding: 2px;">
@@ -87,10 +97,14 @@
 
                 </div>
                 <div class="header-user" style="display: flex; align-items: center; gap: 10px;">
-                    <p>Bonjour <span  id="userName"></span></p>
+                    <p style="display: flex; align-items: center; gap: 8px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" style="object-fit: cover; border: 2px solid blueviolet; border-radius: 50px; box-sizing: border-box; padding: 2px; width: 25px; height: 25px;">
+                            <path d="M320 312C386.3 312 440 258.3 440 192C440 125.7 386.3 72 320 72C253.7 72 200 125.7 200 192C200 258.3 253.7 312 320 312zM290.3 368C191.8 368 112 447.8 112 546.3C112 562.7 125.3 576 141.7 576L498.3 576C514.7 576 528 562.7 528 546.3C528 447.8 448.2 368 349.7 368L290.3 368z"/>
+                        </svg>
+                        Bonjour <span id="userName"></span></p>
                 </div>
             </header>
-            <div id="pageFolders" style="display: none;">
+            <div id="pageFolders" >
                 <form action="" id="folderForm">
                     <input type="text" id="folderName" placeholder="Nom du dossier ex: Travail" required>
                     <input type="color" name="" id="folderColor" value="#000">
@@ -98,8 +112,15 @@
                 </form>
                 <div id="folderList"></div>
             </div>
+
+            <footer>
+                <p>2026© To-do Pro</p>
+                <a href="">Politique et confidentialite</a>
+                <a href="">Contact</a>
+            </footer>
         </div>
 
     </div>
+    <script src="C:\Users\Desktop Arielle\Desktop\todoList\fichier js\script.js"></script>
 </body>
 </html>
