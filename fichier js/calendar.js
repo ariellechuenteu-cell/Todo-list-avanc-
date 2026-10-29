@@ -1,3 +1,23 @@
+// ----- Afficher le prénom de l'utilisateur dans le header -----
+function afficherPrenom() {
+    // id de la personne connectée (gardé à la connexion)
+    const idConnecte = sessionStorage.getItem("todopro_session");
+
+    // liste de tous les comptes
+    const utilisateurs = JSON.parse(localStorage.getItem("todopro_users")) || [];
+
+    // on cherche le compte de la personne connectée
+    const moi = utilisateurs.find((u) => u.id === idConnecte);
+
+    // si on l'a trouvé, on écrit son prénom dans chaque <span id="userName">
+    if (moi) {
+        document.querySelectorAll("#userName").forEach((zone) => {
+            zone.textContent = moi.prenom;
+        });
+    }
+}
+afficherPrenom();
+
 const currentDate = document.querySelector(".current-date");
 const daysTag = document.querySelector(".days");
 const prevNextIcon = document.querySelectorAll(".icons svg");
